@@ -1,12 +1,9 @@
-const http = require('http');
+const http = require("http"); //this one is global so 
 
-const server = http.createServer((req, res) => {
-  console.log(req)
-  res.writeHead(200, { 'Content-Type': 'text/html' });
-  res.end('<h1>My name is Pratikesh</h1>');
-});
+const routes=require("./routes")  //bkz its now locally available to" ./"
 
-const port = 4000;
-server.listen(port, () => {
-  console.log(`Server running at http://localhost:${port}/`);
-});
+const text=routes.someText
+
+const server = http.createServer(routes.handler);
+
+server.listen(3000);
